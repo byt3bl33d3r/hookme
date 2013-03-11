@@ -55,7 +55,7 @@ namespace Installer
             
             ProcessStartInfo startInfo;
             startInfo = new ProcessStartInfo("cmd.exe");
-            startInfo.Arguments = Directory.GetCurrentDirectory() + @"\register.bat";
+            startInfo.Arguments = "/k " + "\"" + Directory.GetCurrentDirectory() + @"\register.bat" + "\"";
             startInfo.Verb = "runas";
             System.Diagnostics.Process.Start(startInfo);
         }
