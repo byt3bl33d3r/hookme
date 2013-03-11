@@ -110,6 +110,7 @@ namespace hook.Core
 
         public void OnFunctionCalled(NktHook hook, NktProcess process, NktHookCallInfo hookCallInfo)
         {
+            System.Windows.Forms.MessageBox.Show("A");
             string function = hook.FunctionName.ToLower();
             wrappers.FunctionWrapper functionWr = new wrappers.FunctionWrapper(hook, process, hookCallInfo);
 
