@@ -41,7 +41,7 @@ namespace hook.Core.ProcessFunctions
             if (function.callInfo.Params() == null)
                 return new byte[0];
             if (function.callInfo.Params().Count == 0)
-                recv new byte[0];
+                return new byte[0];
 
             int lenBytes = (int)function.callInfo.Result().Value;
 
