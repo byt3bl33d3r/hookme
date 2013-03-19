@@ -48,6 +48,9 @@ namespace hook.Core
 
         public bool UnHook()
         {
+            if (process == null)
+                return false;
+
             bool unhooked = false;
 
             foreach (NktHook hook in Program.hook.spyMgr.Hooks())

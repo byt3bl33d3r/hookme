@@ -544,7 +544,7 @@ namespace hook
                 Core.ProcessFunctions.send s = new Core.ProcessFunctions.send(Program.data.currentFunction);
                 byte[] sendBuffer = s.GetBuffer();
 
-                if (sendBuffer != null)
+                if (sendBuffer != null && sendBuffer.Length > 0)
                     Program.data.currentFunction = Core.ProcessFunctions.send.PrepareFunction(Program.data.currentFunction, sendBuffer);
             }
             else if (Program.data.currentFunction.Hook.FunctionName.ToLower() == "WS2_32.dll!Recv".ToLower())
@@ -552,7 +552,7 @@ namespace hook
                 Core.ProcessFunctions.recv r = new Core.ProcessFunctions.recv(Program.data.currentFunction);
                 byte[] recvBuffer = r.GetBuffer();
 
-                if (recvBuffer != null)
+                if (recvBuffer != null && recvBuffer.Length>0)
                     Program.data.currentFunction = Core.ProcessFunctions.recv.PrepareFunction(Program.data.currentFunction, recvBuffer);
             }
             else if (Program.data.currentFunction.Hook.FunctionName.ToLower() == "WS2_32.dll!SendTo".ToLower())
@@ -560,7 +560,7 @@ namespace hook
                 Core.ProcessFunctions.sendto st = new Core.ProcessFunctions.sendto(Program.data.currentFunction);
                 byte[] sendToBuffer = st.GetBuffer();
 
-                if (sendToBuffer != null)
+                if (sendToBuffer != null && sendToBuffer.Length > 0)
                     Program.data.currentFunction = Core.ProcessFunctions.recv.PrepareFunction(Program.data.currentFunction, sendToBuffer);
             }
             else if (Program.data.currentFunction.Hook.FunctionName.ToLower() == "WS2_32.dll!RecvFrom".ToLower())
@@ -568,7 +568,7 @@ namespace hook
                 Core.ProcessFunctions.recvfrom rf = new Core.ProcessFunctions.recvfrom(Program.data.currentFunction);
                 byte[] recvFromBuffer = rf.GetBuffer();
 
-                if (recvFromBuffer != null)
+                if (recvFromBuffer != null && recvFromBuffer.Length > 0)
                     Program.data.currentFunction = Core.ProcessFunctions.recv.PrepareFunction(Program.data.currentFunction, recvFromBuffer);                
             }
             else if (Program.data.currentFunction.Hook.FunctionName.ToLower() == "WS2_32.dll!WSASend".ToLower())
@@ -577,7 +577,7 @@ namespace hook
                 Core.ProcessFunctions.WSAsend wsas = new Core.ProcessFunctions.WSAsend(Program.data.currentFunction);
                 byte[] wsasBuffer = wsas.GetBuffer();
 
-                if (wsasBuffer != null)
+                if (wsasBuffer != null && wsasBuffer.Length > 0)
                     Program.data.currentFunction = Core.ProcessFunctions.WSAsend.PrepareFunction(Program.data.currentFunction, wsasBuffer); 
             }
             else if (Program.data.currentFunction.Hook.FunctionName.ToLower() == "WS2_32.dll!WSASendTo".ToLower())
@@ -588,7 +588,7 @@ namespace hook
                 Core.ProcessFunctions.WSArecv wsar = new Core.ProcessFunctions.WSArecv(Program.data.currentFunction);
                 byte[] wsarBuffer = wsar.GetBuffer();
 
-                if (wsarBuffer != null)
+                if (wsarBuffer != null && wsarBuffer.Length > 0)
                     Program.data.currentFunction = Core.ProcessFunctions.WSArecv.PrepareFunction(Program.data.currentFunction, wsarBuffer);
 
             }
@@ -598,7 +598,7 @@ namespace hook
                 Core.ProcessFunctions.EncryptMessage encMessage = new Core.ProcessFunctions.EncryptMessage(Program.data.currentFunction);
                 byte[] encMessageBuffer = encMessage.GetBuffer();
 
-                if (encMessageBuffer != null)
+                if (encMessageBuffer != null && encMessageBuffer.Length > 0)
                     Program.data.currentFunction = Core.ProcessFunctions.WSArecv.PrepareFunction(Program.data.currentFunction, encMessageBuffer);
 
             }
@@ -608,7 +608,7 @@ namespace hook
                 Core.ProcessFunctions.DecryptMessage decMessage = new Core.ProcessFunctions.DecryptMessage(Program.data.currentFunction);
                 byte[] decMessageBuffer = decMessage.GetBuffer();
 
-                if (decMessageBuffer != null)
+                if (decMessageBuffer != null && decMessageBuffer.Length > 0)
                     Program.data.currentFunction = Core.ProcessFunctions.WSArecv.PrepareFunction(Program.data.currentFunction, decMessageBuffer);
 
             }
