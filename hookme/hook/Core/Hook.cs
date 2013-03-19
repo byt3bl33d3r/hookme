@@ -38,9 +38,6 @@ namespace hook.Core
             {
                 hook.Hook(true);
                 hook.Attach(process,true);// false);
-
-
-
             }
             catch
             {
@@ -49,6 +46,21 @@ namespace hook.Core
             return true;
         }
 
+        public bool UnHook()
+        {
+            bool unhooked = false;
+
+            foreach (NktHook hook in Program.hook.spyMgr.Hooks())
+            {
+                hook.Unhook(false);
+
+                if (!unhooked)
+                    Program.LogThis("Core", "Unhooking " + process.Name);
+                unhooked = true;
+            }
+
+            return unhooked;
+        }
 
         public bool HookProcess(int pid)
         {
@@ -67,6 +79,8 @@ namespace hook.Core
 
         public bool HookProcess(NktProcess process)
         {
+            this.UnHook();
+
             /*
              OJO: Es importante que se hookee la funcion como 'send' y no como 'Send', porque si no el hook se hará bien
                   pero la función devolverá 0 parámetros en vez de los 4 que tiene en su estructura
