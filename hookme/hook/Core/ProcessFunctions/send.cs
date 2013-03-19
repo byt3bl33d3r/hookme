@@ -33,12 +33,17 @@ namespace hook.Core.ProcessFunctions
         {
            
             // Numero de parámetros que trae la función
+            /*
             if ((function.callInfo.Params() == null) | (function.callInfo.Params().Count == 0) )
             {
                 //return null; // Esto pasa cuando la funcion se hookea mal. Es case sensitive y tiene que ir en minusculas, como 'send'
                 return new byte[0];
             }
-
+            */
+            if (function.callInfo.Params() == null)
+                return new byte[0];
+            if (function.callInfo.Params().Count == 0)
+                recv new byte[0];
 
             int lenBytes = (int)function.callInfo.Params().GetAt(2).Value;
 

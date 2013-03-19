@@ -466,11 +466,17 @@ namespace hook
 
                 Program.data.AceptingNewFunctions = false;
                 Program.data.currentFunction = (FunctionWrapper)Program.hook.stackFunctions.Pop();
-               
+
+                if (Program.data.currentFunction == null)
+                {
+                    Program.data.AceptingNewFunctions = true;
+                    continue;
+                }
+
                 if (Program.data.intercept == false)
                 {
                     // Aqui habria que hacer el remplazo de matchandreplace antes de forwardear
-                    // Pero para eso primero es necesario completar todos los manejadores de todas las funciones
+                    // Pero para eso primero es necesario completar todos los manejadores de todas las funcionesif 
                     ForwardFunction();
                     continue ;
                 }
