@@ -885,7 +885,16 @@ namespace hook
                     MessageBox.Show("Error starting " + fop.p.StartInfo.FileName);
                 else
                 {
-                    fop.p.WaitForInputIdle(1000);
+                    try
+                    {
+                        // Puede dar una excepcion si la app no tiene una interfaz grafica
+                        fop.p.WaitForInputIdle(1000);
+                    }
+                    catch
+                    {
+                        
+                    }
+
                     foreach (NktProcess process in Program.hook.spyMgr.Processes())
                     {
                         if (process.Id == fop.p.Id)
