@@ -68,8 +68,9 @@ namespace hook
             }
 
             consoleHandler.ProcessArguments(args);
-           
+
             Program.data.configuration.LoadConfiguration();
+
             try
             {
                 // Si desde la consola se le indica una licencia... se establece en la configuracion antes de arrancar el motor de deviare

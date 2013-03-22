@@ -74,13 +74,13 @@ namespace hook.Core
 
             // hooks
             recv = bool.Parse((string)rk.GetValue("recv", "true"));
-            recvfrom = bool.Parse((string)rk.GetValue("recvfrom", (bool)true));
-            send = bool.Parse((string)rk.GetValue("send", (bool)true));
-            sendto = bool.Parse((string)rk.GetValue("sendto", (bool)true));
-            wsasend = bool.Parse((string)rk.GetValue("wsasend", (bool)true));
-            wsarecv = bool.Parse((string)rk.GetValue("wsarecv", (bool)true));
-            encryptmessage = bool.Parse((string)rk.GetValue("encryptmessage", (bool)true));
-            decryptmessage = bool.Parse((string)rk.GetValue("decryptmessage", (bool)true));
+            recvfrom = bool.Parse((string)rk.GetValue("recvfrom", "true"));
+            send = bool.Parse((string)rk.GetValue("send", "true"));
+            sendto = bool.Parse((string)rk.GetValue("sendto", "true"));
+            wsasend = bool.Parse((string)rk.GetValue("wsasend", "true"));
+            wsarecv = bool.Parse((string)rk.GetValue("wsarecv", "true"));
+            encryptmessage = bool.Parse((string)rk.GetValue("encryptmessage", "true"));
+            decryptmessage = bool.Parse((string)rk.GetValue("decryptmessage","true"));
         }
 
     }
