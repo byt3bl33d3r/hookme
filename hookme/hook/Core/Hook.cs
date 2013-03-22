@@ -89,7 +89,7 @@ namespace hook.Core
                   pero la función devolverá 0 parámetros en vez de los 4 que tiene en su estructura
             */
             bool result = false;
-
+            
             result = HookFunction(process, "Secur32.dll!EncryptMessage", eNktHookFlags.flgOnlyPreCall);
             if (result == false)
                 return result;
