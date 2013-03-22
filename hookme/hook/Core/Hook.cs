@@ -89,38 +89,76 @@ namespace hook.Core
                   pero la función devolverá 0 parámetros en vez de los 4 que tiene en su estructura
             */
             bool result = false;
-            
-            result = HookFunction(process, "Secur32.dll!EncryptMessage", eNktHookFlags.flgOnlyPreCall);
+            if (Program.data.configuration.encryptmessage)
+            {
+                result = HookFunction(process, "Secur32.dll!EncryptMessage", eNktHookFlags.flgOnlyPreCall);
+                if (result == false)
+                    return result;
+            }
+
+            if (Program.data.configuration.decryptmessage)
+            {
+                result = HookFunction(process, "Secur32.dll!DecryptMessage", eNktHookFlags.flgOnlyPostCall);
+                if (result == false)
+                    return result;
+            }
+
+            if (Program.data.configuration.send)
+            {
+                result = HookFunction(process, "WS2_32.dll!send", eNktHookFlags.flgOnlyPreCall);
+                if (result == false)
+                    return result;
+            }
+
+            if (Program.data.configuration.recv)
+            {
+                result = HookFunction(process, "WS2_32.dll!recv", eNktHookFlags.flgOnlyPostCall);
+                if (result == false)
+                    return result;
+            }
+
+            if (Program.data.configuration.sendto)
+            {
+                result = HookFunction(process, "WS2_32.dll!sendto", eNktHookFlags.flgOnlyPreCall);
+                if (result == false)
+                    return result;
+            }
+
+            if (Program.data.configuration.recvfrom)
+            {
+                result = HookFunction(process, "WS2_32.dll!recvfrom", eNktHookFlags.flgOnlyPostCall);
+                if (result == false)
+                    return result;
+            }
+
+            if (Program.data.configuration.wsasend)
+            {
+                result = HookFunction(process, "WS2_32.dll!WSASend", eNktHookFlags.flgOnlyPreCall);
+                if (result == false)
+                    return result;
+            }
+
+            if (Program.data.configuration.wsarecv)
+            {
+                result = HookFunction(process, "WS2_32.dll!WSARecv", eNktHookFlags.flgOnlyPostCall);
+                if (result == false)
+                    return result;
+            }
+
+            /*
+                Estos dos hooks están comentados hasta que no estén implementados los handlers
+             
+                result = HookFunction(process, "WS2_32.dll!WSASendTo", eNktHookFlags.flgOnlyPreCall);
+                if (result == false)
+                    return result;
+                result = HookFunction(process, "WS2_32.dll!WSARecvFrom", eNktHookFlags.flgOnlyPostCall);
+                if (result == false)
+                    return result;
+            */
+
             if (result == false)
                 return result;
-            result = HookFunction(process, "Secur32.dll!DecryptMessage", eNktHookFlags.flgOnlyPostCall);
-            if (result == false)
-                return result;
-            result = HookFunction(process, "WS2_32.dll!send", eNktHookFlags.flgOnlyPreCall);
-            if (result == false)  
-                return result;
-            result = HookFunction(process, "WS2_32.dll!recv", eNktHookFlags.flgOnlyPostCall);
-            if (result == false)
-                return result;
-            result = HookFunction(process, "WS2_32.dll!sendto", eNktHookFlags.flgOnlyPreCall);
-            if (result == false)
-                return result;
-            result = HookFunction(process, "WS2_32.dll!recvfrom", eNktHookFlags.flgOnlyPostCall);
-            if (result == false)
-                return result;
-            result = HookFunction(process, "WS2_32.dll!WSASend", eNktHookFlags.flgOnlyPreCall);
-            if (result == false)
-                return result;
-            result = HookFunction(process, "WS2_32.dll!WSASendTo", eNktHookFlags.flgOnlyPreCall);
-            if (result == false)
-                return result;
-            result = HookFunction(process, "WS2_32.dll!WSARecv", eNktHookFlags.flgOnlyPostCall);
-            if (result == false)
-                return result;
-            result = HookFunction(process, "WS2_32.dll!WSARecvFrom", eNktHookFlags.flgOnlyPostCall);
-            if (result == false)
-                return result;
-            
+
             this.process = process;
            return true;
         }

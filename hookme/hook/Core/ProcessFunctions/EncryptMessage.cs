@@ -19,6 +19,9 @@ namespace hook.Core.ProcessFunctions
 
         public byte[] GetBuffer()
         {
+            if (function.callInfo.Params() == null)
+                return null;
+
             Nektra.Deviare2.INktParam PSecBufferDesc = function.callInfo.Params().GetAt(2);
             Nektra.Deviare2.INktProcessMemory PSecBufferMemory = PSecBufferDesc.Memory();
             /*
