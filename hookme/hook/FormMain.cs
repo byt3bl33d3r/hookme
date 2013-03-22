@@ -942,6 +942,49 @@ namespace hook
             frmLicense.ShowDialog();
         }
 
+        private void unhookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Program.hook.process == null)
+                return;
+
+            bool r = Program.hook.UnHook();
+
+            if (r)
+            {
+                FormInfo fInfo = new FormInfo("Unhooked!", 0, FormInfo.IconType.OK);
+                fInfo.StartPosition = FormStartPosition.CenterParent;
+                fInfo.Show(Program.formMain);
+
+                Program.LogThis("Core", "Process " + Program.hook.process.Name + " unhooked");
+                Program.hook.process = null;
+            }
+            else
+            {
+                FormInfo fInfo = new FormInfo("Error hooking", 0, FormInfo.IconType.Error);
+                fInfo.StartPosition = FormStartPosition.CenterParent;
+                fInfo.Show(Program.formMain);
+
+                Program.LogThis("Core", "Error hooking " + Program.hook.process.Name);
+            }
+        }
+
+        private void fileToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            if (Program.hook.process == null)
+            {
+                openToolStripMenuItem.Enabled = true;
+                attachToolStripMenuItem.Enabled = true;
+                unhookToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                openToolStripMenuItem.Enabled = false;
+                attachToolStripMenuItem.Enabled = false;
+                unhookToolStripMenuItem.Enabled = true;
+            }
+                
+        }
+
         
         
     }

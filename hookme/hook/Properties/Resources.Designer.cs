@@ -81,6 +81,13 @@ namespace hook.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap application_delete {
+            get {
+                object obj = ResourceManager.GetObject("application_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap application_get {
             get {
                 object obj = ResourceManager.GetObject("application_get", resourceCulture);

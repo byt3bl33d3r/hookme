@@ -68,6 +68,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.attachToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unhookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -511,11 +512,13 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
             this.attachToolStripMenuItem,
+            this.unhookToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Image = global::hook.Properties.Resources.application;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.fileToolStripMenuItem.Text = "&File";
+            this.fileToolStripMenuItem.DropDownOpening += new System.EventHandler(this.fileToolStripMenuItem_DropDownOpening);
             // 
             // openToolStripMenuItem
             // 
@@ -532,6 +535,14 @@
             this.attachToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.attachToolStripMenuItem.Text = "&Attach";
             this.attachToolStripMenuItem.Click += new System.EventHandler(this.attachToolStripMenuItem_Click);
+            // 
+            // unhookToolStripMenuItem
+            // 
+            this.unhookToolStripMenuItem.Image = global::hook.Properties.Resources.application_delete;
+            this.unhookToolStripMenuItem.Name = "unhookToolStripMenuItem";
+            this.unhookToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.unhookToolStripMenuItem.Text = "&Unhook";
+            this.unhookToolStripMenuItem.Click += new System.EventHandler(this.unhookToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -757,6 +768,7 @@
         private System.Windows.Forms.LinkLabel linkSponsorUs;
         private System.Windows.Forms.WebBrowser wBrowser;
         private System.Windows.Forms.ToolStripMenuItem licenseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unhookToolStripMenuItem;
     }
 }
 

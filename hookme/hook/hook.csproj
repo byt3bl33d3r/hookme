@@ -266,6 +266,7 @@
     <None Include="Resources\piraton.png" />
     <None Include="Resources\award_star_gold_1.png" />
     <None Include="Resources\magnifier.png" />
+    <None Include="Resources\application_delete.png" />
     <Content Include="Scripts\MySQL_Backdoor.txt" />
     <Content Include="Scripts\script01.txt" />
     <Content Include="Scripts\script02.txt" />
